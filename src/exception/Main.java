@@ -5,6 +5,8 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		
+		// runtime exception
 		System.out.println("Hello World...");
 		
 		try {
@@ -40,6 +42,8 @@ public class Main {
 			System.out.println(e.getMessage());
 		}
 		
+		
+		// Compile time exception
 		try {
 		Thread.sleep(2000);
 		System.out.println("Start method");
