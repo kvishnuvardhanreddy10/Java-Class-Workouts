@@ -3,7 +3,7 @@ package polymorphism;
 public class Method_Overloading {
 	
 	void Calculate(int a, int b) {
-		System.out.println("Sum : " + (a+b));
+		System.out.println("Add : " + (a+b));
 	}
 	
 	void Calculate(double a, double b) {
