@@ -1,7 +1,7 @@
 package syn_thread;
 
 
-public class Syn_Thread {
+public class Syn_Thread extends Syn_Thread1 {
 	
 	synchronized void food() {
 		for(int i = 0; i <= 10; i++) {
@@ -76,9 +76,14 @@ public class Syn_Thread {
 			syn_Thread.delivered();
 		});
 		
+		Thread t4 = new Thread(()->{
+			syn_Thread.parentmethod();
+		});
+		
 		t1.start();
 		t2.start();
 		t3.start();
+		t4.start();
 		syn_Thread.booking();
 	}
 }
