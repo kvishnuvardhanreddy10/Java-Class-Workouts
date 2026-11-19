@@ -4,15 +4,15 @@ package exception;
 
 public class Bank {
 	
-	public void amount(int balance) {
+	public void amount(int balance) throws Maximum50000 {
 		if(balance <= 0) {
 			throw new MinimumBalance("Maintain balance more than 0rs");
 		}else if(balance > 50000) {
-			try {
+//			try {
 			throw new Maximum50000("Maintain balance less than 50000rs");
-			}catch(Maximum50000 e) {
-				System.out.println(e.getMessage());
-			}
+//			}catch(Maximum50000 e) {
+//				System.out.println(e.getMessage());
+//			}
 		}
 		else {
 			System.out.println("Balance : " + balance);
@@ -24,12 +24,22 @@ public class Bank {
 
 		Bank bank = new Bank();
 		try {
-		bank.amount(0);
+		try {
+			bank.amount(0);
+		} catch (Maximum50000 e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		}catch(MinimumBalance e) {
 			System.out.println(e.getMessage());
 		}
 		
-		bank.amount(59999);
+		try {
+			bank.amount(59999);
+		} catch (Maximum50000 e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
