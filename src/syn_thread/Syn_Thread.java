@@ -14,7 +14,24 @@ public class Syn_Thread extends Syn_Thread1 {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			if(i == 0) {
+				try {
+					wait();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
+		
+//		try {
+//			wait();
+//			System.out.println("Thread 1 completed");
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 	
 	synchronized void location() {
@@ -29,6 +46,14 @@ public class Syn_Thread extends Syn_Thread1 {
 				e.printStackTrace();
 			}
 		}
+		
+//		try {
+//			wait();
+//			System.out.println("Thread 2 completed");
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 	
 	synchronized void delivered() {
@@ -37,7 +62,7 @@ public class Syn_Thread extends Syn_Thread1 {
 			
 			try {
 				System.out.println("Food delivered : " + i);
-				Thread.sleep(500);
+				Thread.sleep(500); // sleep -> it automatically release after mentioned delay
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -57,6 +82,12 @@ public class Syn_Thread extends Syn_Thread1 {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	synchronized void release() {
+		notify(); // it release only the first thread which blocked by wait() method
+		notifyAll(); // it release all thread which blocked by wait() method
+		System.out.println("released....");
 	}
 
 	public static void main(String[] args) {
@@ -80,11 +111,17 @@ public class Syn_Thread extends Syn_Thread1 {
 			syn_Thread.parentmethod();
 		});
 		
-		t1.start();
+		Thread t5 = new Thread(()->{
+			syn_Thread.release();
+		});
+		
+		t1.start(); // if we are calling thread method then we have use start() instead of method name.
 		t2.start();
 		t3.start();
 		t4.start();
+		t5.start();
 		syn_Thread.booking();
+		
 	}
 }
 
