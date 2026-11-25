@@ -13,15 +13,22 @@ public class Collections_ArrayList {
 		array.add("Messi");
 		array.add("Boston");
 		array.add("Madrid");
+		
 		System.out.println(array);
 		System.out.println(array.get(3));
+		
 		array.set(0, "Texas");
+		
 		System.out.println(array);
 		System.out.println(array.size());
 		System.out.println(array.isEmpty());
+		
 		array.remove(1);
+		
 		System.out.println(array);
+		
 		array.clear();
+		
 		System.out.println(array.isEmpty());
 		
 	}
